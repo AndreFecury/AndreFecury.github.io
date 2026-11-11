@@ -123,10 +123,11 @@ footer{padding-block:40px;border-top:1px solid var(--line);font:400 .8rem var(--
       <span class="coords">3°08′S · 60°01′W · Manaus, AM</span>
     </div>
     <h1>André<span class="two">Fecury</span></h1>
-    <p class="lede">Dev júnior e estudante da <b>UNIP Manaus</b>. Faço back-end com Python, Java e PostgreSQL, apps Android e jogos 3D na Unity.</p>
+    <p class="lede">Estagiário de QA e testes de software no <b>Sidia (Samsung)</b>, validando firmware FOTA/FUS e automatizando testes com Python. Estudante de Ciência da Computação na UNIP.</p>
     <div class="cta">
       <a class="btn primary" href="#projetos">Ver projetos</a>
       <a class="btn" href="https://github.com/AndreFecury" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/andr%C3%A9-fecury-54a583313" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn" href="#terminal">Abrir terminal</a>
     </div>
     <canvas class="river" id="river" aria-label="Animação do Encontro das Águas: o Rio Negro e o Solimões correndo lado a lado" role="img"></canvas>
@@ -139,13 +140,13 @@ footer{padding-block:40px;border-top:1px solid var(--line);font:400 .8rem var(--
       <h2>Duas águas, um curso só.</h2>
     </div>
     <div>
-      <p>Como no Encontro das Águas, eu gosto de juntar mundos diferentes: a parte de dados e servidores, com APIs, bancos relacionais e Docker, e a parte visual, com apps Android, interfaces e jogos 3D.</p>
-      <p>Hoje estou no 3º de 8 semestres de Ciência da Computação e procuro estágio para aprender com um time de verdade.</p>
+      <p>Como no Encontro das Águas, eu gosto de juntar mundos diferentes. No Sidia trabalho com qualidade de software: testes funcionais e de regressão, análise de logs, investigação de bugs e automação em Python para as atualizações de firmware dos aparelhos Samsung.</p>
+      <p>Nos projetos pessoais vou para o outro lado: apps Android e Flutter, jogos 3D e inteligência artificial. Quero crescer em engenharia de software, automação de QA, Android e P&amp;D.</p>
       <dl class="facts">
         <div><dt>Curso</dt><dd>Ciência da Computação</dd></div>
-        <div><dt>Semestre</dt><dd>3 de 8</dd></div>
-        <div><dt>Foco</dt><dd>Back-end e Mobile</dd></div>
-        <div><dt>Status</dt><dd>Aberto a estágio</dd></div>
+        <div><dt>Semestre</dt><dd>4º · até 2028</dd></div>
+        <div><dt>Foco</dt><dd>QA, Android e IA</dd></div>
+        <div><dt>Hoje</dt><dd>Estágio no Sidia</dd></div>
       </dl>
     </div>
   </section>
@@ -193,8 +194,9 @@ footer{padding-block:40px;border-top:1px solid var(--line);font:400 .8rem var(--
 
 <script>
 const PROJ=[
+ {y:"2026",t:"BookMind AI",f:["python"],d:"App de leitura inteligente com indexação semântica, repetição espaçada e comandos contextuais com IA. Em desenvolvimento.",tags:["IA","Busca semântica","Mobile"],url:null,note:"em breve"},
  {y:"2026",t:"Picped",f:["python"],d:"API para comparar preços entre supermercados de Manaus. Camadas Domain → Repository → Service → Routers, pool de conexões, Docker Compose com healthcheck e Swagger. Projeto em equipe (PSICODE).",tags:["FastAPI","PostgreSQL","Docker","Pydantic"],url:null,note:"privado · GitLab"},
- {y:"2026",t:"AquAlerta",f:["java"],d:"Monitoramento de enchentes em Manaus: app Flutter com mapa por severidade, alertas push e dados do Copernicus e da ANA. Protótipo de backend em Spring Boot.",tags:["Flutter","Supabase","Spring Boot","PostGIS"],url:null,note:"privado · GitHub"},
+ {y:"2026",t:"AquAlerta",f:["java"],d:"Monitoramento de enchentes em tempo real na Amazônia: app Flutter com mapa por severidade, alertas push e dados do Copernicus e da ANA. Protótipo de backend em Spring Boot.",tags:["Flutter","Supabase","Spring Boot","PostGIS"],url:null,note:"privado · GitHub"},
  {y:"2026",t:"Cubo mágico 3D",f:["java"],d:"App Android em Java que simula um cubo 3×3 interativo em 3D, com os movimentos de um cubo físico.",tags:["Android","Java","3D"],repo:"Cubo-m-gico-3d-Android-em-Java"},
  {y:"2026",t:"Jogo de terror 3D",f:["c"],d:"Jogo em primeira pessoa na Unity com foco em tensão psicológica, exploração e atmosfera.",tags:["Unity","C#"],repo:"Jogo-3d-Unity-happy-tree-friends-"},
  {y:"2026",t:"BD_POO",f:["python"],d:"Banco de dados e POO em Python: CRUD com SQLite e PostgreSQL + pgAdmin via Docker, com schema, seed e queries.",tags:["Python","SQL","Docker"],repo:"BD_POO"},
@@ -208,6 +210,7 @@ const TL=[
  ["mar 2026","Android e Unity","Cubo mágico 3D em Java e jogo de terror 3D na Unity."],
  ["mai 2026","APS AquAlerta","Plataforma de monitoramento de enchentes, em grupo."],
  ["ago–out 2026","Banco de dados + POO","CRUD em Python, PostgreSQL com Docker e o início do Picped."],
+ ["jun 2026","Estágio no Sidia (Samsung)","Software & Firmware Analyst Intern: testes e automação de FOTA/FUS."],
  ["nov 2026","Picped: API e Docker","Backend em FastAPI com arquitetura em camadas e Docker Compose."]
 ];
 const GH="https://github.com/AndreFecury/";
@@ -248,10 +251,10 @@ const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 function print(html){out.insertAdjacentHTML("beforeend",html+"\n");out.scrollTop=out.scrollHeight}
 const CMDS={
   ajuda:()=>`<span class="d">comandos:</span> sobre · skills · projetos · abrir &lt;n&gt; · contato · rio · tema · limpar`,
-  sobre:()=>`André Luiz Sales Fecury Filho\nCiência da Computação · UNIP Manaus · 3º/8 semestre\nfoco: back-end, banco de dados, mobile e jogos`,
-  skills:()=>`linguagens  python ████████░░  java ███████░░░  c ██████░░░░  c# ████░░░░░░\nback-end    fastapi · spring boot · postgresql · sqlite · docker\nmobile/jogos android studio · flutter · unity\nferramentas git · github · gitlab · vs code`,
+  sobre:()=>`André Luiz Sales Fecury Filho\nSoftware & Firmware Analyst Intern (FOTA/FUS) @ Sidia · Samsung\nCiência da Computação · UNIP Manaus · 4º semestre\nfoco: QA e automação de testes, Android, IA e P&D`,
+  skills:()=>`linguagens   python · java · c · c# · dart · sql\nqa           testes funcionais e de regressão · automação · casos de teste\n             fota/fus · validação de firmware · logs · causa raiz\nmobile/jogos android studio · flutter · unity\nback-end     fastapi · spring boot · postgresql · supabase · docker\nferramentas  git · github · gitlab · vs code · agile/scrum`,
   projetos:()=>PROJ.map((p,i)=>`<span class="p">[${i+1}]</span> ${p.t} <span class="d">· ${p.tags.slice(0,2).join(", ")}</span>`).join("\n")+`\n<span class="d">use: abrir 2</span>`,
-  contato:()=>`github  <a href="${GH}" target="_blank" rel="noopener">github.com/AndreFecury</a>`,
+  contato:()=>`github    <a href="${GH}" target="_blank" rel="noopener">github.com/AndreFecury</a>\nlinkedin  <a href="https://www.linkedin.com/in/andr%C3%A9-fecury-54a583313" target="_blank" rel="noopener">linkedin.com/in/andré-fecury</a>`,
   rio:()=>`O Rio Negro (escuro, ácido, mais quente) e o Solimões (barrento, mais frio)\ncorrem lado a lado por ~6 km sem se misturar, por diferenças de\ntemperatura, velocidade e densidade. Fica aqui do lado de Manaus.`,
   tema:()=>{toggleTheme();return `tema: ${themeLabel()}`},
   limpar:()=>{out.innerHTML="";return null}
