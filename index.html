@@ -1,319 +1,258 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>André Fecury</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Portfólio de André Fecury, estudante de Ciência da Computação em Manaus.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: uma coluna estreita que "desce o rio" — hero com o Encontro das Águas, projetos filtráveis, terminal e trajetória. */
-:root{
-  --bg:#EEF3F2; --surface:#FFFFFF; --ink:#10242B; --muted:#4F6670; --line:#CFDCDB;
-  --negro:#2A1C14; --solimoes:#B7793A; --accent:#1D6F86; --accent-ink:#FFFFFF;
-  --term-bg:#10242B; --term-fg:#D7E6E4; --term-dim:#7FA0A6; --term-hi:#E2B071;
-  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --f-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --f-mono:"IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0C171B; --surface:#12232A; --ink:#E3ECEA; --muted:#93AAB0; --line:#22383F;
-  --negro:#05090A; --solimoes:#D9A464; --accent:#4FB3CF; --accent-ink:#06171C;
-  --term-bg:#071013; --term-fg:#D7E6E4; --term-dim:#6E8E94; --term-hi:#E2B071; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0C171B; --surface:#12232A; --ink:#E3ECEA; --muted:#93AAB0; --line:#22383F;
-  --negro:#05090A; --solimoes:#D9A464; --accent:#4FB3CF; --accent-ink:#06171C;
-  --term-bg:#071013; --term-fg:#D7E6E4; --term-dim:#6E8E94; --term-hi:#E2B071; color-scheme:dark}
-
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
-a{color:var(--accent)}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-.wrap{max-width:960px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
-.eyebrow{font:500 .75rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-section{padding-block:clamp(48px,8vw,88px)}
-section+section{border-top:1px solid var(--line)}
-
-/* HERO */
-.hero{padding-block:clamp(40px,7vw,72px) 0}
-.hero-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
-.coords{font:400 .8rem var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
-.hero h1{font-size:clamp(3rem,11vw,7rem);font-weight:800;letter-spacing:-.035em;margin-top:28px}
-.hero h1 .two{display:block;color:var(--solimoes)}
-.lede{max-width:34ch;font-size:clamp(1.1rem,2.4vw,1.35rem);margin:24px 0 0;color:var(--ink)}
-.lede b{font-weight:600}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;font:600 .95rem var(--f-body);text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer}
-.btn.primary{background:var(--ink);color:var(--bg)}
-.btn:hover{transform:translateY(-1px)}
-.river{display:block;width:100%;height:clamp(120px,22vw,200px);margin-top:clamp(36px,6vw,56px);border-radius:0}
-.river-cap{display:flex;justify-content:space-between;font:400 .72rem var(--f-mono);color:var(--muted);padding-top:8px;gap:12px;flex-wrap:wrap}
-
-/* SOBRE */
-.about{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(24px,5vw,64px)}
-.about>*{min-width:0}
-.about h2{font-size:clamp(2rem,5vw,3rem)}
-.about p{margin:0 0 14px;max-width:62ch}
-.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:20px}
-.facts div{background:var(--bg);padding:14px}
-.facts dt{font:500 .7rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.facts dd{margin:4px 0 0;font-weight:600}
-
-/* PROJETOS */
-.head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
-.head h2{font-size:clamp(2rem,5vw,3rem)}
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{font:500 .82rem var(--f-mono);padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.projects{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.proj{display:grid;grid-template-columns:3.2rem 1fr auto;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
-.proj>*{min-width:0}
-.proj .yr{font:500 .8rem var(--f-mono);color:var(--muted);padding-top:6px;font-variant-numeric:tabular-nums}
-.proj h3{font-size:1.45rem;font-weight:700}
-.proj p{margin:6px 0 10px;color:var(--muted);max-width:62ch}
-.tags{display:flex;gap:6px;flex-wrap:wrap}
-.tag{font:400 .72rem var(--f-mono);padding:3px 8px;border-radius:4px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--ink)}
-.proj .go{font:600 .85rem var(--f-body);white-space:nowrap;padding-top:6px}
-.proj .go.off{color:var(--muted);font-weight:400}
-.proj.hide{display:none}
-.live{font:400 .72rem var(--f-mono);color:var(--muted)}
-
-/* TERMINAL */
-.term{background:var(--term-bg);color:var(--term-fg);border-radius:10px;font:400 .9rem/1.55 var(--f-mono);overflow:hidden}
-.term-bar{display:flex;gap:8px;align-items:center;padding:10px 14px;border-bottom:1px solid color-mix(in srgb,var(--term-fg) 12%,transparent);color:var(--term-dim);font-size:.75rem}
-.term-bar i{width:10px;height:10px;border-radius:50%;background:color-mix(in srgb,var(--term-fg) 25%,transparent);display:inline-block}
-.term-out{padding:14px 16px;height:300px;overflow:auto;white-space:pre-wrap;word-break:break-word}
-.term-out .p{color:var(--term-hi)}
-.term-out .d{color:var(--term-dim)}
-.term-in{display:flex;gap:8px;padding:0 16px 14px;align-items:center}
-.term-in label{color:var(--term-hi)}
-.term-in input{flex:1;min-width:0;background:transparent;border:0;color:var(--term-fg);font:inherit;outline:none}
-.hint{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.hint button{font:400 .78rem var(--f-mono);padding:5px 10px;border-radius:4px;border:1px dashed var(--line);background:transparent;color:var(--muted);cursor:pointer}
-
-/* TRAJETÓRIA */
-.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
-.timeline li{position:relative;padding:0 0 26px 24px}
-.timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--solimoes)}
-.timeline time{font:500 .78rem var(--f-mono);color:var(--muted)}
-.timeline h3{font-size:1.15rem;margin:2px 0 4px}
-.timeline p{margin:0;color:var(--muted);max-width:60ch}
-
-footer{padding-block:40px;border-top:1px solid var(--line);font:400 .8rem var(--f-mono);color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.theme-btn{font:400 .8rem var(--f-mono);background:none;border:1px solid var(--line);color:var(--muted);padding:4px 10px;border-radius:999px;cursor:pointer}
-
-@media (max-width:720px){
-  .about{grid-template-columns:1fr}
-  .proj{grid-template-columns:1fr}
-  .proj .yr,.proj .go{padding-top:0}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>André Fecury · Software Quality, Engineering, Automation</title>
+  <meta name="description" content="Portfólio de André Fecury: estudante de Ciência da Computação na UNIP e estagiário de qualidade de software no SIDIA, em Manaus. Testes, automação com Python, validação de firmware e desenvolvimento." />
+  <meta name="author" content="André Luiz Sales Fecury Filho" />
+  <meta name="theme-color" content="#07090C" />
+  <link rel="canonical" href="https://andrefecury.github.io/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="André Fecury · Software Quality, Engineering, Automation" />
+  <meta property="og:description" content="Entre qualidade de software, automação e desenvolvimento. Manaus, AM." />
+  <meta property="og:url" content="https://andrefecury.github.io/" />
+  <meta property="og:image" content="https://andrefecury.github.io/assets/img/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"André Luiz Sales Fecury Filho","alternateName":"André Fecury",
+   "url":"https://andrefecury.github.io/","jobTitle":"Software QA & Test Engineer Intern",
+   "worksFor":{"@type":"Organization","name":"SIDIA Instituto de Ciência e Tecnologia"},
+   "alumniOf":{"@type":"CollegeOrUniversity","name":"Universidade Paulista (UNIP)"},
+   "address":{"@type":"PostalAddress","addressLocality":"Manaus","addressRegion":"AM","addressCountry":"BR"},
+   "sameAs":["https://github.com/AndreFecury","https://www.linkedin.com/in/andr%C3%A9-fecury-54a583313"]}
+  </script>
 </head>
 <body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
 
-<div class="wrap">
-  <header class="hero" id="inicio">
-    <div class="hero-top">
-      <span class="eyebrow">Portfólio · Ciência da Computação</span>
-      <span class="coords">3°08′S · 60°01′W · Manaus, AM</span>
+  <header class="nav" data-nav>
+    <a class="nav__brand" href="#inicio">AF<span aria-hidden="true">.</span><span class="sr"> André Fecury, início</span></a>
+    <nav aria-label="Capítulos">
+      <ul class="nav__links" id="menu">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#tecnologias">Tecnologias</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#trajetoria">Trajetória</a></li>
+        <li><a href="#github">GitHub</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="nav__actions">
+      <button class="btn-term" type="button" data-open-terminal aria-haspopup="dialog"><span aria-hidden="true">&gt;_</span> terminal</button>
+      <button class="nav__toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
     </div>
-    <h1>André<span class="two">Fecury</span></h1>
-    <p class="lede">Estagiário de QA e testes de software no <b>Sidia (Samsung)</b>, validando firmware FOTA/FUS e automatizando testes com Python. Estudante de Ciência da Computação na UNIP.</p>
-    <div class="cta">
-      <a class="btn primary" href="#projetos">Ver projetos</a>
-      <a class="btn" href="https://github.com/AndreFecury" target="_blank" rel="noopener">GitHub ↗</a>
-      <a class="btn" href="https://www.linkedin.com/in/andr%C3%A9-fecury-54a583313" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="btn" href="#terminal">Abrir terminal</a>
-    </div>
-    <canvas class="river" id="river" aria-label="Animação do Encontro das Águas: o Rio Negro e o Solimões correndo lado a lado" role="img"></canvas>
-    <div class="river-cap"><span>Rio Negro · ~28 °C · pH ~5</span><span>Encontro das Águas</span><span>Solimões · ~22 °C · pH ~7</span></div>
   </header>
 
-  <section id="sobre" class="about">
-    <div>
-      <p class="eyebrow">Sobre</p>
-      <h2>Duas águas, um curso só.</h2>
-    </div>
-    <div>
-      <p>Como no Encontro das Águas, eu gosto de juntar mundos diferentes. No Sidia trabalho com qualidade de software: testes funcionais e de regressão, análise de logs, investigação de bugs e automação em Python para as atualizações de firmware dos aparelhos Samsung.</p>
-      <p>Nos projetos pessoais vou para o outro lado: apps Android e Flutter, jogos 3D e inteligência artificial. Quero crescer em engenharia de software, automação de QA, Android e P&amp;D.</p>
-      <dl class="facts">
-        <div><dt>Curso</dt><dd>Ciência da Computação</dd></div>
-        <div><dt>Semestre</dt><dd>4º · até 2028</dd></div>
-        <div><dt>Foco</dt><dd>QA, Android e IA</dd></div>
-        <div><dt>Hoje</dt><dd>Estágio no Sidia</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section id="projetos">
-    <div class="head">
-      <div><p class="eyebrow">Projetos</p><h2>O que eu já construí</h2></div>
-      <div class="chips" role="group" aria-label="Filtrar por linguagem">
-        <button class="chip" aria-pressed="true" data-f="todos">todos</button>
-        <button class="chip" aria-pressed="false" data-f="python">python</button>
-        <button class="chip" aria-pressed="false" data-f="java">java</button>
-        <button class="chip" aria-pressed="false" data-f="c">c / c#</button>
-        <button class="chip" aria-pressed="false" data-f="web">web</button>
+  <main id="conteudo">
+    <!-- 01 · INTRODUÇÃO -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <canvas class="hero__waters" aria-hidden="true"></canvas>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <p class="kicker" data-hero-item><span class="dot" aria-hidden="true"></span> 3°08′S · 60°01′W · Manaus, Amazonas, Brasil</p>
+        <h1 id="hero-titulo" class="hero__name">
+          <span class="line"><span class="word" data-hero-word>André</span></span>
+          <span class="line"><span class="word word--italic" data-hero-word>Fecury</span></span>
+        </h1>
+        <p class="hero__role" data-hero-item>
+          <span>Software Quality</span><i aria-hidden="true">/</i><span>Engineering</span><i aria-hidden="true">/</i><span>Automation</span><i aria-hidden="true">/</i><span>Development</span>
+        </p>
+        <p class="hero__lede" data-hero-item>Transformando problemas complexos em soluções inteligentes.</p>
+        <p class="hero__sub" data-hero-item>Entre engenharia de software, qualidade, automação e desenvolvimento, construo soluções que conectam tecnologia e propósito.</p>
+        <div class="hero__cta" data-hero-item>
+          <a class="btn btn--solid" href="#projetos">Ver projetos</a>
+          <a class="btn btn--ghost" href="#trajetoria">Minha trajetória</a>
+        </div>
+        <ul class="hero__social" data-hero-item aria-label="Redes">
+          <li><a href="https://github.com/AndreFecury" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.linkedin.com/in/andr%C3%A9-fecury-54a583313" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
       </div>
+      <div class="hero__legend" aria-hidden="true">
+        <span>Rio Negro</span><span class="hero__legend-line"></span><span>Solimões</span>
+      </div>
+      <a class="scroll-cue" href="#sobre" aria-label="Rolar para o capítulo Sobre"><span></span></a>
+    </section>
+
+    <!-- 02 · SOBRE -->
+    <section class="chapter about" id="sobre" aria-labelledby="sobre-titulo">
+      <header class="chapter__head">
+        <span class="chapter__num">01</span>
+        <span class="chapter__label">Sobre</span>
+      </header>
+      <div class="about__grid">
+        <h2 id="sobre-titulo" class="statement" data-words>Duas águas, um curso só. Gosto de juntar mundos diferentes: a precisão da qualidade de software com a vontade de construir.</h2>
+        <div class="about__text">
+          <p data-reveal>Estudo <strong>Ciência da Computação na UNIP</strong>, em Manaus, e trabalho com <strong>qualidade de software no SIDIA</strong>, instituto de pesquisa e desenvolvimento que cria tecnologia para a Samsung.</p>
+          <p data-reveal>No dia a dia, valido atualizações de firmware, investigo falhas a partir de logs e escrevo automações em Python. Fora do estágio, levo esse cuidado para os meus projetos: apps Android e Flutter, APIs, jogos e, agora, inteligência artificial.</p>
+          <dl class="facts" data-reveal>
+            <div><dt>Curso</dt><dd>Ciência da Computação · UNIP</dd></div>
+            <div><dt>Período</dt><dd>4º de 8 semestres</dd></div>
+            <div><dt>Hoje</dt><dd>Estágio no SIDIA</dd></div>
+            <div><dt>Foco</dt><dd>Qualidade, automação e desenvolvimento</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · EXPERIÊNCIA -->
+    <section class="chapter exp" id="experiencia" aria-labelledby="exp-titulo">
+      <div class="exp__pin">
+        <div class="exp__side">
+          <header class="chapter__head">
+            <span class="chapter__num">02</span>
+            <span class="chapter__label">Engenharia · Experiência</span>
+          </header>
+          <h2 id="exp-titulo" class="exp__title">SIDIA</h2>
+          <p class="exp__org">Instituto de Ciência e Tecnologia</p>
+          <p class="exp__role"><span data-field="cargo">Software QA &amp; Test Engineer Intern</span> · desde jun 2026</p>
+          <ol class="exp__index" aria-hidden="true"></ol>
+          <p class="exp__note">Descrevo áreas de atuação, sem informações internas ou confidenciais.</p>
+        </div>
+        <ol class="exp__areas" aria-label="Áreas de atuação"></ol>
+      </div>
+    </section>
+
+    <!-- 04 · TECNOLOGIAS -->
+    <section class="chapter skills" id="tecnologias" aria-labelledby="skills-titulo">
+      <header class="chapter__head">
+        <span class="chapter__num">03</span>
+        <span class="chapter__label">Tecnologia</span>
+      </header>
+      <h2 id="skills-titulo" class="section-title" data-words>Ferramentas que uso, e onde uso cada uma.</h2>
+      <p class="skills__legend" data-reveal>
+        Sem barras de nível: cada tecnologia mostra o contexto em que eu realmente a usei.
+        <span class="ctx ctx--pro">profissional</span>
+        <span class="ctx ctx--proj">em projetos</span>
+        <span class="ctx ctx--acad">acadêmico</span>
+        <span class="ctx ctx--exp">explorando</span>
+      </p>
+      <div class="skills__grid"></div>
+    </section>
+
+    <!-- 05 · PROJETOS -->
+    <section class="chapter works" id="projetos" aria-labelledby="works-titulo">
+      <div class="works__pin">
+        <header class="works__head">
+          <div class="chapter__head">
+            <span class="chapter__num">04</span>
+            <span class="chapter__label">Projetos selecionados</span>
+          </div>
+          <h2 id="works-titulo" class="section-title">O que eu já construí.</h2>
+          <p class="works__hint"><span aria-hidden="true">←→</span> role para percorrer · clique para ver o estudo de caso</p>
+        </header>
+        <div class="works__viewport">
+          <ul class="works__track" aria-label="Projetos em destaque"></ul>
+        </div>
+      </div>
+      <div class="index">
+        <div class="index__bar">
+          <h3 class="index__title">Todos os projetos</h3>
+          <div class="filters" role="group" aria-label="Filtrar projetos"></div>
+        </div>
+        <ul class="index__list" aria-live="polite"></ul>
+      </div>
+    </section>
+
+    <!-- 06 · TRAJETÓRIA -->
+    <section class="chapter journey" id="trajetoria" aria-labelledby="journey-titulo">
+      <header class="chapter__head">
+        <span class="chapter__num">05</span>
+        <span class="chapter__label">Trajetória</span>
+      </header>
+      <h2 id="journey-titulo" class="section-title" data-words>Rio acima, um projeto de cada vez.</h2>
+      <div class="journey__wrap">
+        <div class="journey__line" aria-hidden="true"><span></span></div>
+        <ol class="journey__list"></ol>
+      </div>
+    </section>
+
+    <!-- 07 · GITHUB -->
+    <section class="chapter gh" id="github" aria-labelledby="gh-titulo">
+      <header class="chapter__head">
+        <span class="chapter__num">06</span>
+        <span class="chapter__label">GitHub · Código aberto</span>
+      </header>
+      <div class="gh__top">
+        <h2 id="gh-titulo" class="section-title" data-words>O código está aberto.</h2>
+        <a class="btn btn--ghost" href="https://github.com/AndreFecury" target="_blank" rel="noopener">github.com/AndreFecury <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="gh__stats" aria-live="polite">
+        <div class="stat"><span class="stat__n" data-gh="repos">10</span><span class="stat__l">repositórios públicos</span></div>
+        <div class="stat"><span class="stat__n" data-gh="langs">—</span><span class="stat__l">linguagens</span></div>
+        <div class="stat"><span class="stat__n" data-gh="last">—</span><span class="stat__l">último push</span></div>
+      </div>
+      <div class="gh__langs" aria-label="Linguagens principais dos repositórios"></div>
+      <ul class="gh__repos"></ul>
+      <p class="gh__source" data-gh="source"></p>
+    </section>
+
+    <!-- 08 · CONTATO -->
+    <section class="chapter connect" id="contato" aria-labelledby="connect-titulo">
+      <div class="connect__waters" aria-hidden="true"></div>
+      <header class="chapter__head">
+        <span class="chapter__num">07</span>
+        <span class="chapter__label">Vamos conversar</span>
+      </header>
+      <h2 id="connect-titulo" class="connect__title" data-words>Vamos construir algo extraordinário?</h2>
+      <div class="connect__mail">
+        <a class="connect__email" href="mailto:fecury.andre5@gmail.com">fecury.andre5@gmail.com</a>
+        <button class="btn btn--solid" type="button" data-copy="fecury.andre5@gmail.com">Copiar e-mail</button>
+        <span class="toast" role="status" aria-live="polite"></span>
+      </div>
+      <ul class="connect__links">
+        <li><a href="https://github.com/AndreFecury" target="_blank" rel="noopener"><span>GitHub</span><span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://www.linkedin.com/in/andr%C3%A9-fecury-54a583313" target="_blank" rel="noopener"><span>LinkedIn</span><span aria-hidden="true">↗</span></a></li>
+        <li><a href="mailto:fecury.andre5@gmail.com"><span>E-mail</span><span aria-hidden="true">↗</span></a></li>
+      </ul>
+      <footer class="foot">
+        <span>André Luiz Sales Fecury Filho</span>
+        <span>Manaus, Amazonas, Brasil</span>
+        <span>© 2026</span>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Estudo de caso (modal) -->
+  <dialog class="case" aria-labelledby="case-title">
+    <div class="case__inner">
+      <button class="case__close" type="button" data-close aria-label="Fechar estudo de caso">Fechar <span aria-hidden="true">×</span></button>
+      <div class="case__body"></div>
     </div>
-    <ul class="projects" id="plist"></ul>
-    <p class="live" id="live"></p>
-  </section>
+  </dialog>
 
-  <section id="terminal">
-    <div class="head"><div><p class="eyebrow">Interativo</p><h2>Pergunte ao terminal</h2></div></div>
-    <div class="term">
-      <div class="term-bar"><i></i><i></i><i></i><span>andre@manaus: ~</span></div>
-      <div class="term-out" id="tout" aria-live="polite"></div>
-      <form class="term-in" id="tform" autocomplete="off">
-        <label for="tin">$</label>
-        <input id="tin" type="text" spellcheck="false" placeholder="digite ajuda e aperte Enter">
-      </form>
+  <!-- Terminal interativo (opcional) -->
+  <dialog class="term" aria-label="Terminal interativo">
+    <div class="term__bar">
+      <span class="term__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>andre@manaus: ~</span>
+      <button type="button" data-close aria-label="Fechar terminal">×</button>
     </div>
-    <div class="hint" id="hints">
-      <button type="button">ajuda</button><button type="button">sobre</button><button type="button">skills</button><button type="button">projetos</button><button type="button">rio</button>
-    </div>
-  </section>
+    <div class="term__out" role="log" aria-live="polite"></div>
+    <form class="term__form">
+      <label for="term-in"><span aria-hidden="true">$</span><span class="sr">Comando</span></label>
+      <input id="term-in" type="text" autocomplete="off" spellcheck="false" autocapitalize="off" />
+    </form>
+    <div class="term__hints" aria-label="Atalhos de comando"></div>
+  </dialog>
 
-  <section id="trajetoria">
-    <div class="head"><div><p class="eyebrow">Trajetória</p><h2>Rio acima</h2></div></div>
-    <ol class="timeline" id="tl"></ol>
-  </section>
+  <noscript><p class="noscript">Algumas seções usam JavaScript. Os projetos também estão em <a href="https://github.com/AndreFecury">github.com/AndreFecury</a>.</p></noscript>
 
-  <footer>
-    <span>André Luiz Sales Fecury Filho · Manaus</span>
-    <button class="theme-btn" id="themeBtn" type="button">tema: sistema</button>
-  </footer>
-</div>
-
-<script>
-const PROJ=[
- {y:"2026",t:"BookMind AI",f:["python"],d:"App de leitura inteligente com indexação semântica, repetição espaçada e comandos contextuais com IA. Em desenvolvimento.",tags:["IA","Busca semântica","Mobile"],url:null,note:"em breve"},
- {y:"2026",t:"Picped",f:["python"],d:"API para comparar preços entre supermercados de Manaus. Camadas Domain → Repository → Service → Routers, pool de conexões, Docker Compose com healthcheck e Swagger. Projeto em equipe (PSICODE).",tags:["FastAPI","PostgreSQL","Docker","Pydantic"],url:null,note:"privado · GitLab"},
- {y:"2026",t:"AquAlerta",f:["java"],d:"Monitoramento de enchentes em tempo real na Amazônia: app Flutter com mapa por severidade, alertas push e dados do Copernicus e da ANA. Protótipo de backend em Spring Boot.",tags:["Flutter","Supabase","Spring Boot","PostGIS"],url:null,note:"privado · GitHub"},
- {y:"2026",t:"Cubo mágico 3D",f:["java"],d:"App Android em Java que simula um cubo 3×3 interativo em 3D, com os movimentos de um cubo físico.",tags:["Android","Java","3D"],repo:"Cubo-m-gico-3d-Android-em-Java"},
- {y:"2026",t:"Jogo de terror 3D",f:["c"],d:"Jogo em primeira pessoa na Unity com foco em tensão psicológica, exploração e atmosfera.",tags:["Unity","C#"],repo:"Jogo-3d-Unity-happy-tree-friends-"},
- {y:"2026",t:"BD_POO",f:["python"],d:"Banco de dados e POO em Python: CRUD com SQLite e PostgreSQL + pgAdmin via Docker, com schema, seed e queries.",tags:["Python","SQL","Docker"],repo:"BD_POO"},
- {y:"2026",t:"Cadastro de alunos no terminal",f:["c"],d:"CRUD em C com interface colorida (ANSI true color), navegação pelas setas e persistência em arquivo.",tags:["C","TUI","Arquivos"],repo:"faculdade-ciencia-da-computacao",path:"/tree/main/c"},
- {y:"2025",t:"AES em Python",f:["python"],d:"Sistema de criptografia simétrica com o algoritmo AES.",tags:["Python","Criptografia"],repo:"AES-python"},
- {y:"2025",t:"Atividades da faculdade",f:["java","c","python","web"],d:"Java com Swing, C, Python, HTML/CSS e Spring Boot, organizados por disciplina.",tags:["Java","C","Python","HTML/CSS"],repo:"faculdade-ciencia-da-computacao"}
-];
-const TL=[
- ["2025","Entrada em Ciência da Computação","Primeiros passos com Python, C, Java e HTML/CSS na UNIP Manaus."],
- ["2025","Criptografia AES","Primeiro projeto publicado no GitHub."],
- ["mar 2026","Android e Unity","Cubo mágico 3D em Java e jogo de terror 3D na Unity."],
- ["mai 2026","APS AquAlerta","Plataforma de monitoramento de enchentes, em grupo."],
- ["ago–out 2026","Banco de dados + POO","CRUD em Python, PostgreSQL com Docker e o início do Picped."],
- ["jun 2026","Estágio no Sidia (Samsung)","Software & Firmware Analyst Intern: testes e automação de FOTA/FUS."],
- ["nov 2026","Picped: API e Docker","Backend em FastAPI com arquitetura em camadas e Docker Compose."]
-];
-const GH="https://github.com/AndreFecury/";
-const $=s=>document.querySelector(s);
-
-function renderProjects(filter){
-  $("#plist").innerHTML=PROJ.map((p,i)=>{
-    const show=filter==="todos"||p.f.includes(filter);
-    const link=p.repo?`<a class="go" href="${GH+p.repo+(p.path||"")}" target="_blank" rel="noopener">abrir ↗</a>`:`<span class="go off">${p.note}</span>`;
-    return `<li class="proj${show?"":" hide"}" data-i="${i}"><span class="yr">${p.y}</span><div><h3>${p.t}</h3><p>${p.d}</p><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div></div>${link}</li>`;
-  }).join("");
-}
-let cur="todos";
-try{cur=localStorage.getItem("af-filter")||"todos"}catch(e){}
-document.querySelectorAll(".chip").forEach(b=>{
-  b.setAttribute("aria-pressed",String(b.dataset.f===cur));
-  b.addEventListener("click",()=>{
-    cur=b.dataset.f;
-    document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
-    renderProjects(cur);
-    try{localStorage.setItem("af-filter",cur)}catch(e){}
-  });
-});
-renderProjects(cur);
-$("#tl").innerHTML=TL.map(([d,t,p])=>`<li><time>${d}</time><h3>${t}</h3><p>${p}</p></li>`).join("");
-
-/* Dados ao vivo do GitHub (só funciona fora do sandbox do Claude, ex.: GitHub Pages) */
-if(/github\.io$/.test(location.hostname)){
-  fetch("https://api.github.com/users/AndreFecury/repos?per_page=100").then(r=>r.ok?r.json():Promise.reject()).then(rs=>{
-    const n=rs.filter(r=>!r.fork).length, last=rs.map(r=>r.pushed_at).sort().pop();
-    $("#live").textContent=`ao vivo: ${n} repositórios públicos · último push em ${new Date(last).toLocaleDateString("pt-BR")}`;
-  }).catch(()=>{});
-}
-
-/* Terminal */
-const out=$("#tout"),inp=$("#tin");
-const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-function print(html){out.insertAdjacentHTML("beforeend",html+"\n");out.scrollTop=out.scrollHeight}
-const CMDS={
-  ajuda:()=>`<span class="d">comandos:</span> sobre · skills · projetos · abrir &lt;n&gt; · contato · rio · tema · limpar`,
-  sobre:()=>`André Luiz Sales Fecury Filho\nSoftware & Firmware Analyst Intern (FOTA/FUS) @ Sidia · Samsung\nCiência da Computação · UNIP Manaus · 4º semestre\nfoco: QA e automação de testes, Android, IA e P&D`,
-  skills:()=>`linguagens   python · java · c · c# · dart · sql\nqa           testes funcionais e de regressão · automação · casos de teste\n             fota/fus · validação de firmware · logs · causa raiz\nmobile/jogos android studio · flutter · unity\nback-end     fastapi · spring boot · postgresql · supabase · docker\nferramentas  git · github · gitlab · vs code · agile/scrum`,
-  projetos:()=>PROJ.map((p,i)=>`<span class="p">[${i+1}]</span> ${p.t} <span class="d">· ${p.tags.slice(0,2).join(", ")}</span>`).join("\n")+`\n<span class="d">use: abrir 2</span>`,
-  contato:()=>`github    <a href="${GH}" target="_blank" rel="noopener">github.com/AndreFecury</a>\nlinkedin  <a href="https://www.linkedin.com/in/andr%C3%A9-fecury-54a583313" target="_blank" rel="noopener">linkedin.com/in/andré-fecury</a>`,
-  rio:()=>`O Rio Negro (escuro, ácido, mais quente) e o Solimões (barrento, mais frio)\ncorrem lado a lado por ~6 km sem se misturar, por diferenças de\ntemperatura, velocidade e densidade. Fica aqui do lado de Manaus.`,
-  tema:()=>{toggleTheme();return `tema: ${themeLabel()}`},
-  limpar:()=>{out.innerHTML="";return null}
-};
-function run(raw){
-  const line=raw.trim(); if(!line) return;
-  print(`<span class="p">$</span> ${esc(line)}`);
-  const [c,arg]=line.toLowerCase().split(/\s+/);
-  if(c==="abrir"){
-    const p=PROJ[parseInt(arg,10)-1];
-    if(!p) return print(`informe o número do projeto. ex.: abrir 2`);
-    return print(p.repo?`→ <a href="${GH+p.repo+(p.path||"")}" target="_blank" rel="noopener">${p.t}</a>`:`${p.t} é privado (${p.note}).`);
-  }
-  const f=CMDS[c]; const r=f?f():`comando não encontrado: ${esc(c)}. digite <span class="p">ajuda</span>`;
-  if(r!==null) print(r);
-}
-$("#tform").addEventListener("submit",e=>{e.preventDefault();run(inp.value);inp.value=""});
-$("#hints").addEventListener("click",e=>{if(e.target.tagName==="BUTTON")run(e.target.textContent)});
-print(`<span class="d">bem-vindo! digite</span> <span class="p">ajuda</span> <span class="d">ou clique num atalho abaixo.</span>`);
-
-/* Tema */
-const modes=["sistema","claro","escuro"];let mode=0;
-function themeLabel(){return modes[mode]}
-function applyTheme(){
-  const r=document.documentElement;
-  if(mode===0) r.removeAttribute("data-theme"); else r.setAttribute("data-theme",mode===1?"light":"dark");
-  $("#themeBtn").textContent="tema: "+themeLabel();
-}
-function toggleTheme(){mode=(mode+1)%3;applyTheme();try{localStorage.setItem("af-theme",mode)}catch(e){}}
-try{mode=+(localStorage.getItem("af-theme")||0)%3}catch(e){}
-applyTheme();
-$("#themeBtn").addEventListener("click",toggleTheme);
-
-/* Encontro das Águas (canvas) */
-(function(){
-  const cv=$("#river"),ctx=cv.getContext("2d");
-  const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let w,h,t=0;
-  function size(){const d=devicePixelRatio||1;w=cv.clientWidth;h=cv.clientHeight;cv.width=w*d;cv.height=h*d;ctx.setTransform(d,0,0,d,0,0)}
-  function col(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
-  function frame(){
-    const negro=col("--negro"),sol=col("--solimoes");
-    ctx.clearRect(0,0,w,h);
-    const mid=y=>h*.5+Math.sin(y*.012+t*.6)*h*.08+Math.sin(y*.031-t)*h*.03;
-    ctx.fillStyle=negro;ctx.fillRect(0,0,w,h);
-    ctx.beginPath();ctx.moveTo(0,h);
-    for(let x=0;x<=w;x+=6) ctx.lineTo(x,mid(x));
-    ctx.lineTo(w,h);ctx.closePath();ctx.fillStyle=sol;ctx.fill();
-    ctx.globalAlpha=.18;ctx.strokeStyle="#ffffff";ctx.lineWidth=1;
-    for(let k=0;k<7;k++){
-      ctx.beginPath();
-      for(let x=0;x<=w;x+=8){const y=h*(.1+k*.13)+Math.sin(x*.02+t*(1+k*.15)+k)*3; x?ctx.lineTo(x,y):ctx.moveTo(x,y)}
-      ctx.stroke();
-    }
-    ctx.globalAlpha=1;
-    t+=.016; if(!still) requestAnimationFrame(frame);
-  }
-  size();addEventListener("resize",size);frame();
-})();
-</script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
